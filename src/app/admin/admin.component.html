@@ -1,0 +1,316 @@
+<!-- <div class="app"> -->
+<app-header [navigationitems]=sideNavigationdata></app-header>
+<p-tabView>
+    <p-tabPanel class="tabview-header" header="Dashboard" [selected]=true>
+        <div class="container-fluid" id="admin-homepage">
+            <div class="row gx-3 mr-top">
+                <!-- card-1 -->
+                <div class="col-xl-3 col-md-3 col-mb-2">
+                    <div class="card border-top-0 border-bottom-0 border-end-lg border-start-lg border-primary h-200">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-primary mb-1">User's Count</div>
+                                    <div class="span-label">Physician <span
+                                            class="span-count">{{stats.physicianCount}}</span></div>
+                                    <div class="span-label">Nurse<span class="span-count">{{stats.nurseCount}}</span>
+                                    </div>
+                                    <!-- <div class="h6"><span class="span-label h6 mb-0 ">Physician</span><span class="span-count h6 mb-0 ">22</span></div>
+                                            <div class="h6"><span class="span-label h6 ">Nurse</span><span class="span-count h6 ">10</span></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- card-2 -->
+                <div class="col-xl-3 col-md-3 col-mb-2">
+                    <div class="card border-top-0 border-bottom-0 border-end-lg border-start-lg border-warning h-200">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-primary mb-1" style="font-weight: 900;">Patient's Count
+                                    </div>
+                                    <div class="span-label" style="padding-top: 10px;
+                                        padding-bottom: 10px;">Registered<span
+                                            class="span-count">{{stats.patientsCount}}</span></div>
+                                    <!-- <div class="h6"><span class="span-label h6 mb-0 ">Physician</span><span class="span-count h6 mb-0 ">22</span></div>
+                                            <div class="h6"><span class="span-label h6 ">Nurse</span><span class="span-count h6 ">10</span></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- card-3 -->
+                <div class="col-xl-3 col-md-3 col-mb-2">
+                    <div class="card border-top-0 border-bottom-0 border-end-lg border-start-lg border-secondary h-200">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-primary mb-1">In-Active Accounts</div>
+                                    <div class="span-label">Patient<span
+                                            class="span-count">{{stats.inActivePatients}}</span></div>
+                                    <div class="span-label">Staff<span class="span-count">{{stats.inActivePhysician}} +
+                                            {{stats.inActiveNurse}}</span></div>
+                                    <!-- <div class="h6"><span class="span-label h6 mb-0 ">Physician</span><span class="span-count h6 mb-0 ">22</span></div>
+                                            <div class="h6"><span class="span-label h6 ">Nurse</span><span class="span-count h6 ">10</span></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- card-4 -->
+                <div class="col-xl-3 col-md-3 col-mb-2">
+                    <div class="card border-top-0 border-bottom-0 border-end-lg border-start-lg border-danger h-200">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-grow-1">
+                                    <div class="fw-bold text-primary mb-1">To Unlock</div>
+                                    <div class="span-label">Patient<span
+                                            class="span-count">{{stats.lockedPatients}}</span></div>
+                                    <div class="span-label">Staff<span class="span-count">{{stats.lockedUsers}}</span>
+                                    </div>
+                                    <!-- <div class="h6"><span class="span-label h6 mb-0 ">Physician</span><span class="span-count h6 mb-0 ">22</span></div>
+                                            <div class="h6"><span class="span-label h6 ">Nurse</span><span class="span-count h6 ">10</span></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row gx-3 mr-top chart">
+                <div class="col-xl-6 col-md-6 col-mb-3">
+                    <div class="text-center"> Admission Rate</div>
+                    <p-chart type="bar" [data]="data" [options]="chartOptions"></p-chart>
+                </div>
+                <div class="col-xl-3 col-md-3 col-mb-4">
+                    <div class="card rr border-end-0 border-bottom-0  border-start-lg border-top-lg border-warning">
+                        <div class="card-header text-center">Admin do's & dont's</div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush d-flex">
+                                <ul type="disc">
+                                    <li class="list-rr">Can add a user</li>
+                                    <li class="list-rr">Activate/Deactive User</li>
+                                    <li class="list-rr">No hard deletes allowed</li>
+                                    <li class="list-rr">Unlock user's account</li>
+                                    <li class="list-rr">Do not create another Admin account, Only 1 Admin prevails</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-3 col-mb-4">
+                    <div class="card rr border-start-0 border-top-0  border-end-lg border-bottom-lg border-success">
+                        <div class="card-header text-center">Admin Roles & Responsibilities</div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush d-flex">
+                                <ul type="disc">
+                                    <li><i class="pi pi-user-plus"></i> Add an Hospital User -
+                                        Physician/Nurse</li>
+                                    <li class="list-rr"><i class="pi pi-ban"></i> Disable/Unlock User's Account</li>
+                                    <li class="list-rr"><i class="pi pi-times"></i> Block User's Account</li>
+                                    <li class="list-rr"><i class="pi pi-pencil"></i> Edit/Delete an Hospital User </li>
+                                    <li class="list-rr"><i class="pi pi-eye-slash"></i> Reset Password for Hospital User
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Patient User Management">
+        <p-table #dt [value]="patientData" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+            styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['id','name','dateOfRegistration','status','action']">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex">
+                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                        (click)="clear(dt)"></button>
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Patient Id
+                            <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Patient Name
+                            <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Date Of Birth
+                            <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Patient Contact
+                            <p-columnFilter type="text" field="dateOfRegistration" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Status
+                            <p-columnFilter field="status" matchMode="equals" display="menu">
+                                <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                    <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+                                        placeholder="Any">
+                                        <ng-template let-option pTemplate="item">
+                                            <span
+                                                [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </ng-template>
+                            </p-columnFilter>
+                        </div>
+                    </th>
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-p>
+                <tr>
+                    <td>
+                        {{p.id}}
+                    </td>
+                    <td>
+                        <span>{{p.first_name}} {{p.last_name}}</span>
+                    </td>
+                    <td>
+                        <span>{{p.date_of_birth}}</span>
+                    </td>
+                    <td>
+                        <span>{{p.email}}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="p.status">Active</div>
+                        <div *ngIf="!p.status">InActive</div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No patients found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </p-tabPanel>
+    <p-tabPanel header="Hospital User Management">
+        <p-table #dt1 [value]="userData" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+            styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['employeeId','firstName','dateofJoining','status','role','emailId']">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex">
+                    <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                        (click)="clear(dt1)"></button>
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                            placeholder="Search keyword" />
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Employee Id
+                            <p-columnFilter type="text" field="employeeId" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Employee Name
+                            <p-columnFilter type="text" field="firstName" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Employee Contact
+                            <p-columnFilter type="text" field="emailId" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Date Of Joining
+                            <p-columnFilter type="text" field="dateofJoining" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Role
+                            <p-columnFilter type="text" field="role" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            Status
+                            <p-columnFilter field="status" matchMode="equals" display="menu">
+                                <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                    <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+                                        placeholder="Any">
+                                        <ng-template let-option pTemplate="item">
+                                            <span
+                                                [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                        </ng-template>
+                                    </p-dropdown>
+                                </ng-template>
+                            </p-columnFilter>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-h>
+                <tr>
+                    <td>
+                        {{h.employeeId}}
+                    </td>
+                    <td>
+                        <span>{{h.firstName}} {{h.lastName}}</span>
+                    </td>
+                    <td>
+                        {{h.emailId}}
+                    </td>
+                    <td>
+                        <span>{{h.dateofJoining}}</span>
+                    </td>
+                    <td>
+                        <span>{{h.role}}</span>
+                    </td>
+                    <td>
+                        <div *ngIf="h.status">Active</div>
+                        <div *ngIf="!h.status">InActive</div>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No Staff found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+    </p-tabPanel>
+    <!-- <p-tabPanel header="Test PrimeNG table">
+    
+        </p-tabPanel> -->
+</p-tabView>
+
+<app-footer></app-footer>
+<!-- </div> -->

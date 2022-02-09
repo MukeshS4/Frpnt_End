@@ -1,0 +1,144 @@
+<app-header [navigationitems]=sideNavigationdata></app-header>
+<p-tabView>
+    <p-tabPanel class="tabview-header" header="Admin" [selected]=true>
+        
+        <div style="padding-bottom: 10px;">
+            <h2 class="headerTrace">Health</h2>
+            <p-progressBar *ngIf="adminHealth" [value]="value"></p-progressBar>
+            <p-progressBar *ngIf="!adminHealth" [value]="100" class="down"></p-progressBar>
+        </div>
+        <h2 class="headerTrace">HTTP trace</h2>
+        <div class="card">
+            <p-table [value]="adminTrace" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                responsiveLayout="scroll"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>TimeStamp</th>
+                        <th>Method</th>
+                        <th>Time Taken(ms)</th>
+                        <th>Status</th>
+                        <th>Url</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-trace>
+                    <tr>
+                        <td>{{trace[1].timestamp}}</td>
+                        <td> <span class="methodStyle">{{trace[1].request.method}}</span></td>
+                        <td style="text-align: center;">{{trace[1].timeTaken}}</td>
+                        <td>
+                            <span *ngIf="trace[1].response.status==200" class="status1">200</span>
+                            <span *ngIf="trace[1].response.status==201" class="status1">201</span>
+                            <span *ngIf="trace[1].response.status==401" class="status3">401</span>
+                            <span *ngIf="trace[1].response.status==403" class="status3">403</span>
+                            <span *ngIf="trace[1].response.status==404" class="status5">404</span>
+                            <span *ngIf="trace[1].response.status==500" class="status5">500</span>
+                        </td>
+                        <td class="uri">{{trace[1].request.uri}}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Patient">
+        <div style="padding-bottom: 10px;">
+            <h2 class="headerTrace">Health</h2>
+            <p-progressBar *ngIf="patientHealth" [value]="value"></p-progressBar>
+            <p-progressBar *ngIf="!patientHealth" [value]="100" class="down"></p-progressBar>
+        </div>
+        <h2 class="headerTrace">HTTP trace</h2>
+        <div class="card">
+            <p-table [value]="patientTrace" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                responsiveLayout="scroll"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>TimeStamp</th>
+                        <th>Method</th>
+                        <th>Time Taken(ms)</th>
+                        <th>Status</th>
+                        <th>Url</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-trace>
+                    <tr>
+                        <td>{{trace[1].timestamp}}</td>
+                        <td> <span class="methodStyle">{{trace[1].request.method}}</span></td>
+                        <td style="text-align: center;">{{trace[1].timeTaken}}</td>
+                        <td>
+                            <span *ngIf="trace[1].response.status==200" class="status1">200</span>
+                            <span *ngIf="trace[1].response.status==201" class="status1">201</span>
+                            <span *ngIf="trace[1].response.status==401" class="status3">401</span>
+                            <span *ngIf="trace[1].response.status==403" class="status3">403</span>
+                            <span *ngIf="trace[1].response.status==404" class="status5">404</span>
+                            <span *ngIf="trace[1].response.status==500" class="status5">500</span>
+                        </td>
+                        <td class="uri">{{trace[1].request.uri}}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Community">
+        <div style="padding-bottom: 10px;">
+            <h2 class="headerTrace">Health</h2>
+            <p-progressBar *ngIf="communityHealth" [value]="value"></p-progressBar>
+            <p-progressBar *ngIf="!communityHealth" [value]="100" class="down"></p-progressBar>
+        </div>
+        <h2 class="headerTrace">HTTP trace</h2>
+        <div class="card">
+            <p-table [value]="communityTrace" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                responsiveLayout="scroll"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10,25,50]">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>TimeStamp</th>
+                        <th>Method</th>
+                        <th>Time Taken(ms)</th>
+                        <th>Status</th>
+                        <th>Url</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-trace>
+                    <tr>
+                        <td>{{trace[1].timestamp}}</td>
+                        <td> <span class="methodStyle">{{trace[1].request.method}}</span></td>
+                        <td style="text-align: center;">{{trace[1].timeTaken}}</td>
+                        <td>
+                            <span *ngIf="trace[1].response.status==200" class="status1">200</span>
+                            <span *ngIf="trace[1].response.status==201" class="status1">201</span>
+                            <span *ngIf="trace[1].response.status==401" class="status3">401</span>
+                            <span *ngIf="trace[1].response.status==403" class="status3">403</span>
+                            <span *ngIf="trace[1].response.status==404" class="status5">404</span>
+                            <span *ngIf="trace[1].response.status==500" class="status5">500</span>
+                        </td>
+                        <td class="uri">{{trace[1].request.uri}}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                    <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                    <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+            </p-table>
+        </div>
+    </p-tabPanel>
+</p-tabView>
+
+<app-footer></app-footer>

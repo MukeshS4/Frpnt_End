@@ -1,0 +1,111 @@
+<app-header [navigationitems]=sideNavigationdata></app-header>
+<div class="progress-spinner" *ngIf="isLoading">
+<p-progressSpinner   styleClass="custom-spinner" [style]="{width: '50px', height: '50px'}"  strokeWidth="8" fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+</div>
+<div class="container-fluid add-user-container">
+    <div class="row gx-3 mr-top d-flex">
+        <div class="container register-form">
+            <form [formGroup]="userRegisterForm" (ngSubmit)="onUserSubmit()">
+                <div class="form-group">
+                    <span class="form-label">Title</span><span class="invalid"
+                        *ngIf='titleControl.hasError("required")'>*Title is required</span>
+                    <span class="radio-alignment">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="title" value="Mr" id="title"
+                                formControlName="title">
+                            <label class="form-check-label" for="titleRadio">Mr</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="title" value="Ms" id="title"
+                                formControlName="title">
+                            <label class="form-check-label" for="titleRadio">Ms</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="title" value="Dr" id="title"
+                                formControlName="title">
+                            <label class="form-check-label" for="titleRadio">Dr</label>
+                        </div>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <span class="form-label">First Name</span><span class="invalid"
+                        *ngIf='fNameControl.hasError("required")'>*First Name is required</span><span class="invalid"
+                        *ngIf='fNameControl.hasError("minlength")'>*First Name Should have min 3 characters</span>
+                    <input class="form-control" type="text" name="firstName" id="firstName" formControlName="firstName"
+                        placeholder="Agastin">
+                </div>
+                <div class="form-group">
+                    <span class="form-label">Last Name</span><span class="invalid"
+                        *ngIf='lNameControl.hasError("required")'>*Last Name is required</span><span class="invalid"
+                        *ngIf='lNameControl.hasError("minlength")'>*Last Name Should have min 3 characters</span>
+                    <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Raj"
+                        formControlName="lastName">
+                </div>
+                <div class="form-group">
+                    <span class="form-label">EmailId</span><span class="invalid"
+                        *ngIf='emailControl.hasError("required")'>*Email is required</span><span class="invalid"
+                        *ngIf='emailControl.hasError("email")'>*Email is Invalid</span>
+                    <input class="form-control" type="email" name="emailId" id="emailId" formControlName="emailId"
+                        placeholder="abc@gmail.com">
+                </div>
+                <div class="form-group">
+                    <span class="form-label">Date Of Birth</span>
+                    <input class="form-control" type="date" name="dateOfBirth" id="dateOfBirth"
+                        formControlName="dateOfBirth">
+                </div>
+                <div class="form-group">
+                    <span class="form-label">Role</span><span class="invalid"
+                        *ngIf='roleControl.hasError("required")'>*Role is required</span>
+                    <span class="radio-alignment">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" value="Physician" id="role"
+                                formControlName="role">
+                            <label class="form-check-label" for="roleRadio">Physician</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" value="Nurse" id="role"
+                                formControlName="role">
+                            <label class="form-check-label" for="roleRadio">Nurse</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="role" value="Admin" id="role"
+                                formControlName="role">
+                            <label class="form-check-label" for="roleRadio">Admin</label>
+                        </div>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <span class="form-label">Employee Id</span>
+                    <span class="invalid1" *ngIf="idUnavailable">
+                        *Id is not available. Please select one from the suggessted list
+                    </span>
+                    <span
+                        class="invalid" *ngIf='employeeIdControl.hasError("pattern")'>*Employee Id is Invalid
+                    </span>
+                    <input class="form-control" type="text" name="employeeId" id="employeeId" 
+                        formControlName="employeeId" value="{{prepopEmpId[0]}}" (keyup)="onChangeEvent($event)">
+                        <span class="suggesstion d-flex">  Suggessted for Use: 
+                            {{prepopEmpId[1]}}, {{prepopEmpId[2]}}, {{prepopEmpId[3]}}
+                        </span>
+                </div>
+                <div class="form-group btn-group">
+                    <button class="submit-btn d-flex" type="submit" [disabled]="userRegisterForm.invalid">Add
+                        Staff</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p-dialog header="Sucess" [(visible)]="successModal">
+    <i class="pi pi-thumbs-up"></i> User Registered!
+</p-dialog>
+<p-dialog header="Failed" [(visible)]="errorModal"  [style]="{width: '30vw'}" [baseZIndex]="10000">
+    <i class="pi pi-thumbs-down"></i> User Registeration Failed!
+</p-dialog>
+<p-dialog header="Failed" [(visible)]="userExistModal"  [style]="{width: '30vw'}" [baseZIndex]="10000">
+    <i class="pi pi-thumbs-down"></i> User Already Exist!
+</p-dialog>
+<p-dialog header="Failed" [(visible)]="isAdmin"  [style]="{width: '30vw'}" [baseZIndex]="10000">
+    <i class="pi pi-thumbs-down"></i>Only 1 Admin can persist 
+</p-dialog>
+<app-footer></app-footer>

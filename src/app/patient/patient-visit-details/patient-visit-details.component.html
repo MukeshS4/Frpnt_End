@@ -1,0 +1,87 @@
+<!-- <app-header></app-header> -->
+<div class="container">
+    <div *ngFor="let post of posts">
+      <div class="patient-details-info">
+        <div class="section-body">
+          <div class="section-header">PATIENT VISIT DETAILS:</div>
+          <div class="field">
+            <div>Height:</div>
+            <div>
+              {{ post.vitalSigns.height }}
+            </div>
+          </div>
+  
+          <div class="field">
+            <div>Weight:</div>
+            <div>{{  post.vitalSigns.weight }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Blood Pressue:</div>
+            <div>{{ post.vitalSigns.bloodPressure }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Body Temperature:</div>
+            <div>{{ post.vitalSigns.bodyTemp }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Respiration Rate:</div>
+            <div>{{ post.vitalSigns.respirationRate }}</div>
+          </div>
+  
+        <div class="section-body">
+          <div class="section-header">DIAGNOSIS:</div>
+          <div class="field">
+            <div>Diagnosis Code:</div>
+            <div>
+              {{ post.diagnosis.diagnosis }}
+            </div>
+          </div>
+          <div class="field">
+            <div>Description:</div>
+            <div>{{
+              post.diagnosis.description
+            }}</div>
+          </div>
+          </div>
+         
+        <div class="section-body">
+          <div class="section-header">PROCEDURE:</div>
+          <div class="field">
+            <div>Procedure Code:</div> <div>{{ post.procedure.procedures }}</div>
+          </div>
+          <div class="field">
+            <div>Description:</div> <div>{{ post.procedure.description }}</div>
+          </div>
+          
+        </div>
+        <div class="section-body" >
+            <div class="section-header">DRUG DATA:</div>
+            <div class="field">
+              <div>Drug Id:</div> <div>{{ post.medication.drugID }}</div>
+            </div>
+            <div class="field">
+              <div>Name:</div> <div>{{ post.medication.drugName }}</div>
+            </div>
+            <div class="field">
+              <div>Generic Name:</div> <div>{{ post.medication.drugGenName }}</div>
+            </div>
+            <div class="field">
+              <div>Brand Name:</div>
+              <div>{{ post.medication.drugBrandName }}</div>
+            </div> 
+            <div class="field">
+                <div>Drug Form :</div>
+                <div>{{ post.medication.drugForm }}</div>
+              </div> 
+              <div class="field">
+                <div>Drug Strength:</div>
+                <div>{{ post.medication.drugStrength }}</div>
+              </div> 
+          </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  

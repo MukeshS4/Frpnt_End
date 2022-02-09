@@ -1,0 +1,194 @@
+:host ::ng-deep .p-input-icon-left,
+.p-input-icon-right {
+  float: right;
+  /* position: relative; */
+  display: inline-block;
+}
+.mr-top {
+  margin-top: 25px;
+}
+:host ::ng-deep .p-tabview-nav {
+  /* text-align: center; */
+  justify-content: center;
+  /* width: 100%; */
+}
+.btn-cus-link1 {
+  width: 100px;
+  padding: 5px;
+  border-radius: 18px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 3px;
+}
+.btn-cus-link1:hover {
+  color: white;
+  background-color: rgb(31, 115, 241);
+  border-color: white;
+  border: 2px solid;
+}
+.comment {
+  text-align: end;
+}
+.post {
+  text-align: end;
+}
+.btn2 {
+  background-color: rgb(71, 175, 85);
+}
+.btn2:hover {
+  background-color: rgb(144, 241, 47);
+  color: black;
+}
+
+.btn-cus-link2 {
+  width: 100px;
+  padding: 5px;
+  border-radius: 18px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.btn-cus-link2:hover {
+  color: white;
+  background-color: red;
+  border-color: white;
+  border: 2px solid;
+}
+
+.btn-cus-edit {
+  width: 100px;
+  padding: 5px;
+  border-radius: 18px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.btn-cus-edit:hover {
+  color: white;
+  background-color: lightgreen;
+  border-color: white;
+  border: 2px solid;
+}
+
+/* .post {
+  float: right;
+}
+.comment {
+  float: right;
+} */
+.chat.u2 {
+  clear: both;
+  text-align: end;
+  border-top-right-radius: 0px;
+  background: rgb(128, 128, 240);
+}
+.chat.u2:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  display: block;
+  border-left: 5px solid rgb(83, 83, 247);
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgb(83, 83, 247);
+  border-bottom: 5px solid transparent;
+  position: absolute;
+  top: 0px;
+  right: -10px;
+}
+
+.chat.u1 {
+  text-align: end;
+  clear: both;
+  border-top-right-radius: 0px;
+  background: rgb(29, 204, 58);
+}
+.chat.u1:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  display: block;
+  border-left: 5px solid rgb(61, 245, 92);
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgb(61, 245, 92);
+  border-bottom: 5px solid transparent;
+  position: absolute;
+  top: 0px;
+  right: -10px;
+}
+
+.chat {
+  background: #72b8ff;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 4px;
+  color: #fff;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
+  margin: 2px;
+  position: relative;
+}
+
+.timespot {
+  position: relative;
+  text-align: end;
+  font-size: small;
+}
+.post-comments {
+  text-align: end;
+}
+.nameBy {
+  color: red;
+  font-weight: 800;
+  font-size: 10px;
+  text-align: end;
+  position: relative;
+}
+.timespot1 {
+  font-size: 10px;
+  text-align: end;
+  position: relative;
+}
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite,
+    custom-progress-spinner-color 6s ease-in-out infinite;
+}
+
+:host ::ng-deep .p-dialog-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: blue;
+  width: 100%;
+}
+
+.progress-spinner {
+  position: fixed;
+  z-index: 1000;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.txt {
+  margin-top: 10px;
+  /* margin-bottom: 6px; */
+}
+.btn-wd {
+  width: 100%;
+  text-align: center;
+  margin-top: 7px;
+}
+
+.cusbtn {
+  border-radius: 12px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.pst {
+  margin-left: 11px;
+}

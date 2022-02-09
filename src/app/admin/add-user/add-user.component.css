@@ -1,0 +1,155 @@
+.register-form {
+  margin-top: 20px;
+  width: 80%;
+}
+
+.register-form h3 {
+  text-align: center;
+  color: rgb(111, 111, 235);
+}
+
+.register-form .form-group {
+  /* margin-top: 1px; */
+  margin-bottom: 9px;
+}
+
+.register-form .form-label {
+  font-weight: 700;
+  color: rgb(111, 111, 235);
+}
+
+.register-form .form-control {
+  border-radius: 15px;
+  height: 35px;
+}
+
+.register-form .radio-alignment {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* .register-form .form-control .option{
+    border-radius: 15px;
+    background-color: rgb(111, 111, 235);
+} */
+
+.register-form .submit-btn {
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  border-radius: 15px;
+  padding: 8px;
+  border: none;
+  background-color: rgb(6, 6, 255);
+}
+.register-form .btn-group {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.register-form .invalid {
+  color: red;
+  text-transform: lowercase;
+  font-weight: 700;
+  font-size: 12px;
+  float: right;
+  /* text-align: right; */
+  margin-right: 20px;
+  padding-top: 5px;
+  /* background-color: black; */
+}
+
+.register-form .invalid1 {
+  color: red;
+  font-weight: 800;
+  font-size: 14px;
+  float: right;
+  /* text-align: right; */
+  margin-right: 20px;
+  padding-top: 5px;
+  /* background-color: black; */
+}
+
+.register-form .suggesstion {
+  color: rgb(11, 143, 11);
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  margin-right: 20px;
+  padding-top: 5px;
+}
+
+.register-form .submit-btn:focus {
+  background-color: rgb(120, 120, 248);
+}
+
+.register-form .submit-btn:hover {
+  background-color: rgb(120, 120, 248);
+}
+
+:host ::ng-deep .p-dialog-titlebar {
+  text-align: center;
+}
+
+:host ::ng-deep .p-dialog-title {
+  color: rgb(13, 170, 13);
+  text-align: center;
+}
+
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .p-dialog .p-button {
+  min-width: 6rem;
+  background-color: rgb(39, 39, 228);
+  color: white;
+}
+
+:host ::ng-deep .p-button {
+  margin: 0 0.5rem 0 0;
+}
+
+:host ::ng-deep .p-dialog-title {
+  text-align: center;
+  justify-content: center;
+}
+
+:host ::ng-deep .custom-spinner .p-progress-spinner-circle {
+   
+  animation: custom-progress-spinner-dash 1.5s ease-in-out infinite,
+    custom-progress-spinner-color 6s ease-in-out infinite;
+}
+
+.progress-spinner {
+    position: fixed;
+    z-index: 1000;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+@keyframes custom-progress-spinner-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}

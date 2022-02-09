@@ -1,0 +1,22 @@
+.btn-cus-link1{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+.btn-cus-link1:hover{
+    background-color: rgb(245, 119, 119);
+    border-color: greenyellow;
+    color:white;
+    border:2px solid;
+}
+:host ::ng-deep .p-input-icon-left, .p-input-icon-right {
+    float: right;
+    /* position: relative; */
+    display: inline-block;
+}
+.mr-top{
+    margin-top: 25px;
+}

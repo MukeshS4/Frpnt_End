@@ -1,0 +1,127 @@
+/* .app {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+} */
+.test1{
+    background-color: black;
+    color: white;
+}
+
+#admin-homepage{    
+    width: 100%;
+    /* height: 80vh; */
+    flex: 20%;
+}
+.card{
+    border: 5px solid rgba(0,0,0,.125);
+    margin-bottom: 15px;
+}
+.chart{
+    height: min-content;
+}
+.mr-top{
+    margin-top: 15px;
+}
+.span-label{
+    color: rgb(168, 165, 165);
+    font-weight: 500;
+}
+.span-count{
+    float: right;
+    color: rgb(168, 165, 165);
+}
+.text-primary {
+    font-size: 13px;
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-primary-rgb),var(--bs-text-opacity))!important;
+}
+.points{
+    height: 16px;
+}
+.rr{
+    margin-top:15px;
+}
+.tabview-header{
+    width: 100%;
+    /* text-align: center; */
+}
+:host ::ng-deep .p-tabview-nav{
+    /* text-align: center; */
+    justify-content: center;
+    /* width: 100%; */
+}
+:host ::ng-deep .p-tabview .p-tabview-panels {
+    /* margin-top: 0; */
+    background: #ffffff;
+    /* padding: 1.25rem; */
+    border: 0 none;
+    color: #212529;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+:host ::ng-deep .p-tabview .p-tabview-panel{
+    /* margin-top: 0; */
+    background: #ffffff;
+    /* padding: 1.25rem; */
+    border: 0 none;
+    color: #212529;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.grid-col{
+    margin-bottom: 10px;
+    border-color: #0d6efd!important;
+    border: 3px solid;
+    border-radius: 10px;
+}
+.btn-cus-link1{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+.btn-cus-link1:hover{
+    background-color: rgb(173, 128, 13);
+    border-color: greenyellow;
+    color:white;
+    border:2px solid;
+}
+:host ::ng-deep .p-input-icon-left, .p-input-icon-right {
+    float: right;
+    /* position: relative; */
+    display: inline-block;
+}
+
+.btn-cus-link2{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.btn-cus-link2:hover{
+    color: white;
+    background-color: red;
+    border-color: white;
+    border:2px solid;
+}
+
+.btn-cus-edit{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.btn-cus-edit:hover{
+    color: white;
+    background-color:lightgreen;
+    border-color: white;
+    border:2px solid;
+}

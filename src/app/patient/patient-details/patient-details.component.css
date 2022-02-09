@@ -1,0 +1,38 @@
+.section-header {
+    color: #0080df;
+    font-size: 15px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-body {
+    font-size: 15px;
+    padding: 10px;
+    flex:1;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 5px;
+}
+
+.patient-details-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.field{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+
+.field div {
+    flex: 1;
+}
+
+.field div:nth-child(1) {
+    font-weight: 600;
+}

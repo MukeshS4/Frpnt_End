@@ -1,0 +1,282 @@
+<!-- <app-header [navigationitems]="userSideNavigationdata"></app-header> -->
+<mat-tab-group mat-stretch-tabs >
+  <mat-tab label="Edit Appointment">
+    <form action="fill" [formGroup]="form" (ngSubmit)="updateAppointment()">
+      <div class="add">
+        <div class="form">
+          <!-- <div>
+            <h1></h1>
+          </div> -->
+          <!-- <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Appointment Id</mat-label>
+        <input matInput value={{appointment.appointmentId}} readonly/>
+      </mat-form-field>
+    </div> -->
+          <!-- <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Patient Id</mat-label>
+        <input matInput value={{appointment.patient.patientId}} readonly/>
+      </mat-form-field>
+    </div>    
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Patient Name</mat-label>
+        <input matInput value={{appointment.patient.name}} readonly/>
+      </mat-form-field>
+    </div> -->
+          <div style="margin-left: 2%; margin-right: 2%; margin-top: 2%;">
+            <!-- <h2>Current Appointment Info</h2> -->
+            <mat-form-field appearance="fill" style="width: 50%;">
+              <mat-label>Physician Name</mat-label>
+              <input
+                matInput
+                value="{{ appointment.employee.firstName }}"
+                readonly
+              />
+            </mat-form-field>
+            <!-- </div>
+  <div> -->
+            <mat-form-field appearance="fill" style="width: 50%;">
+              <mat-label>Physician Id</mat-label>
+              <input
+                matInput
+                value="{{ appointment.employee.employeeId }}"
+                readonly
+              />
+            </mat-form-field>
+          </div>
+          <div style="margin-left: 2%; margin-right: 2%; ">
+    <mat-form-field appearance="fill" style="width: 50%;">
+      <mat-label>Appointment Date</mat-label>
+      <input matInput value={{appointment.date}} readonly/>
+    </mat-form-field>
+  <!-- </div>
+  <div> -->
+    <mat-form-field appearance="fill" style="width: 50%;">
+      <mat-label>Appointment Time</mat-label>
+      <input matInput value={{appointment.time}} readonly/>
+    </mat-form-field>
+  </div>
+          <div style="margin-left: 2%; margin-right: 2%">
+            <!-- <h2>Update Appointment Info</h2> -->
+            <div>
+              <mat-form-field appearance="outline" style="width: 50%;">
+                <mat-label>Physician Name</mat-label>
+                <mat-select
+                  formControlName="employee"
+                  (selectionChange)="showPhysicianId($event.value)"
+                >
+                  <mat-option
+                    *ngFor="let data of listOfPhysician"
+                    [value]="data"
+                    >{{ data.firstName }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+              <!-- </div>
+              <div> -->
+              <mat-form-field appearance="outline" style="width: 50%;">
+                <mat-label>Physician Id</mat-label>
+                <input matInput value="{{ physicianId }}" />
+              </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline" style="width: 50%;">
+              <mat-label>Choose a date</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                [min]="todayDate"
+                (dateInput)="appointmentDateSelectEvent($event)"
+                formCotrolname="date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <!-- </div> 
+            <div> -->
+            <mat-form-field appearance="outline" style="width: 50%;">
+              <mat-label>Update Time Slot</mat-label>
+              <mat-select formControlName="time"
+                ><mat-option
+                  *ngFor="let data of listOfTimeSlot"
+                  [value]="data"
+                  >{{ data }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <div >
+              <mat-form-field appearance="outline"style="width: 100%;">
+                <mat-label>Descriptive Info</mat-label>
+                <textarea
+                  matInput
+                  value="{{ appointment.description }}"
+                  formControlName="description"
+                ></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div>
+            <mat-dialog-actions align="end">
+              
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="form.invalid"
+                style="margin-bottom: 5%;"
+              >
+                Submit
+              </button>
+              <button
+                mat-button
+                matDialogClose="no"
+                style="
+                  margin-bottom: 5%;
+                  background-color: crimson;
+                  color: white;
+                "
+              >
+                Cancel
+              </button>
+            </mat-dialog-actions>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-tab>
+  <mat-tab label="Consult">
+    <form [formGroup]="consultForm" (ngSubmit)="completeConsultation()">
+      <div style="margin-left: 2%; margin-right: 2%;">
+        <h2>Diagnosis:- 
+          <mat-form-field appearance="outline" style="width: 20%;">
+            <mat-label>Code</mat-label>
+            <input type="text"
+           placeholder="Pick one"
+           aria-label="Diagnosis Code"
+           matInput
+           formControlName="diagnosis"
+           [matAutocomplete]="dCodeAuto">
+          <mat-autocomplete autoActiveFirstOption #dCodeAuto="matAutocomplete" >
+            <mat-option *ngFor="let data of filteredOptions | async" [value]="data.dCode" (onSelectionChange)="onDiagnosisSelectionChange(data)">
+              {{data.dCode}}
+            </mat-option>
+          </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 60%; margin-left: 2%;">
+            <mat-label>Description</mat-label>
+            <input matInput readonly value="{{dDescription}}"/>
+          </mat-form-field>
+          <!-- <mat-checkbox style="margin-left: 2%;" [checked]="dDepricated">Depricated</mat-checkbox> -->
+          <!-- <button mat-flat-button color="accent" >Add More</button> -->
+        </h2>
+        </div>
+      
+        <div style="margin-left: 2%; margin-right: 2%; ">
+          <h2>Procedure:- 
+            <mat-form-field appearance="outline" style="width: 20%;">
+              <mat-label>Code</mat-label>
+              <input type="text"
+               placeholder="Pick one"
+               aria-label="Procedure Code"
+               matInput
+               formControlName="procedure"
+               [matAutocomplete]="pCodeAuto">
+              <mat-autocomplete autoActiveFirstOption #pCodeAuto="matAutocomplete" >
+                <mat-option *ngFor="let data of filteredProcedureOptions | async" [value]="data.pCode" (onSelectionChange)="onProcedureSelectionChange(data)">
+                  {{data.pCode}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            
+  
+            <mat-form-field appearance="outline" style="width: 60%; margin-left: 2%;">
+              <mat-label>Description</mat-label>
+              <input matInput readonly value="{{pDescription}}"/>
+            </mat-form-field>
+            <!-- <mat-checkbox style="margin-left: 2%;">Depricated</mat-checkbox> -->
+            <!-- <button mat-flat-button color="accent">Add More</button> -->
+          </h2>
+          </div>
+
+          <div style="margin-left: 2%; margin-right: 2%; ">
+            <h2>Medication:- 
+              <mat-form-field appearance="outline" style="width: 18.5%;">
+                <mat-label>Id</mat-label>
+                <input type="text"
+               placeholder="Pick one"
+               aria-label="Medication Id"
+               matInput
+               formControlName="medication"
+               [matAutocomplete]="mIdAuto">
+              <mat-autocomplete autoActiveFirstOption #mIdAuto="matAutocomplete">
+                <mat-option *ngFor="let data of filteredMedicationOptions | async" [value]="data.mId" (onSelectionChange)="onMedicationSelectionChange(data)">
+                  {{data.mId}}
+                </mat-option>
+              </mat-autocomplete>
+              </mat-form-field>
+    
+              <mat-form-field appearance="outline" style="width: 29%; margin-left: 2%;">
+                <mat-label>Name</mat-label>
+                <input matInput readonly value="{{mName}}"/>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width: 29%; margin-left: 2%;">
+                <mat-label>Generic Name</mat-label>
+                <input matInput readonly value="{{mGenericName}}"/>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width: 18.5%;margin-left: 16%;">
+                <mat-label>Form</mat-label>
+                <input matInput readonly value="{{mForm}}"/>
+              </mat-form-field>
+              <mat-form-field appearance="outline" style="width: 29%; margin-left: 2%;">
+                <mat-label>Brand Name</mat-label>
+                <input matInput readonly value="{{mBrandName}}"/>
+              </mat-form-field>
+              
+              <mat-form-field appearance="outline" style="width: 29%;margin-left: 2%;">
+                <mat-label>Drug Strength</mat-label>
+                <input matInput readonly value="{{mStrength}}"/>
+              </mat-form-field>
+              <!-- <button mat-flat-button style="margin-left: 2%;" color="accent">Add More</button> -->
+            </h2>
+            </div>
+            <div align="end">
+            
+              <button
+                mat-raised-button
+                color="primary"
+                [disabled]="consultForm.invalid"
+                style="margin-left: 2%;"
+              >
+                Complete
+              </button>
+              <button
+                mat-button
+                matDialogClose="no"
+                style="
+                   margin-left: 2%; 
+                  background-color: crimson;
+                  color: white;
+                "
+              >
+                Cancel
+              </button>
+              <button
+                mat-raised-button
+                matDialogClose="no"
+                color="primary"
+                (click)=visitHistory(appointment.patientData.emailId)
+                style="margin-left: 2%;"
+              >
+                Visit History
+              </button>
+            </div>
+          </form>   
+    </mat-tab>
+</mat-tab-group>

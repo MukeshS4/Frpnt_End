@@ -1,0 +1,22 @@
+.page-footer{
+    background-color: whitesmoke;
+    height: 10%;
+    /* bottom: 0; */
+    position: absolute;
+    width: 100%;
+
+}
+.footer-copyright{
+    /* margin-top: 10px; */
+    font-weight: 900;
+}
+.icons{
+    padding: 5px;
+    /* padding-left: 5px ; */
+}
+.icon-align{
+    /* position: absolute;
+    justify-content: center; */
+    flex: auto;
+    /* margin-left: 299px; */
+}

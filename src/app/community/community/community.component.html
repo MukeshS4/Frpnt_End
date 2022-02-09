@@ -1,0 +1,116 @@
+<div class="container-fluid mr-top">
+    <div class="progress-spinner" *ngIf="isLoading">
+        <p-progressSpinner styleClass="custom-spinner" [style]="{width: '50px', height: '50px'}" strokeWidth="8"
+            fill="#EEEEEE" animationDuration=".5s"></p-progressSpinner>
+    </div>
+    <p-table #dt [value]="communityPosts" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers p-datatable-gridlines"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['postedBy','postedCategory','post']">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)">
+                </button>
+                <button class="pst" pButton label="Post" icon="pi pi-plus" (click)="showPostModalDialog()">
+                </button>
+                <p-dialog header="Post a New Response" [(visible)]="displayModal" [modal]="true"
+                    [style]="{width: '40vw'}" [draggable]="false" [resizable]="false">
+                    <form [formGroup]="newCPostForm" (ngSubmit)="onPostSubmit()">
+                        <select class="form-select form-control" id="postCategory" name="postCategory"
+                            aria-label="Default select example" formControlName="postCategory1">
+                            <option value="Ask a Physician">Ask a Physician</option>
+                            <option value="Did you know?">Did you know?</option>
+                            <option value="Request to Admin">Request to Admin</option>
+                            <option value="Open Feedback">Open Feedback</option>
+                        </select>
+                        <textarea class="txt md-textarea form-control" rows="4"
+                            formControlName="postTextArea"></textarea>
+                        <div class="btn-wd">
+                            <button type="reset" class="cusbtn btn btn-primary">Reset</button>
+                            <button type="submit" class="cusbtn btn btn-success">Submit</button>
+                        </div>
+                    </form>
+                </p-dialog>
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                        placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th scope="col" style="width: 200px;">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Posted By
+                        <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th scope="col" style="width: 200px;">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Category
+                        <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th scope="col">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Post
+                        <p-columnFilter type="text" field="dateOfRegistration" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+                <th scope="col" style="width: 200px;">
+                    <div class="p-d-flex p-jc-between p-ai-center">
+                        Action
+                        <p-columnFilter type="text" field="action" display="menu"></p-columnFilter>
+                    </div>
+                </th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-p>
+            <tr>
+                <td>
+                    {{p.postedBy}}
+                </td>
+                <td>
+                    <span>{{p.postCategory}}</span>
+                </td>
+                <td>
+                    <div class="post-comments">
+                        <div class=" post">
+                            <div class="u2 chat">{{p.post}}</div>
+                            <div class="timespot">{{p.postedAt | amTimeAgo}}</div>
+                        </div>
+                        <div class="comment" *ngFor="let item of p.comment ">
+                            <div class="u1 chat">{{item.comment }}</div>
+                            <div>
+                                <div class="nameBy">by {{item.commentedBy}}</div> 
+                                <div class="timespot1">{{item.commentedAt | amTimeAgo}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <form *ngIf="commentBox && p.postId==checkPostId" [formGroup]="commentForm"
+                        (ngSubmit)="onCommentSubmit(p)">
+                        <div>
+                            <textarea rows="4" cols=" 30" name=comment formControlName="textAreaComment"></textarea>
+                        </div>
+                        <div class="comment-sub">
+                            <button class="btn btn2 btn-small btn-success">submit</button>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-cus-link1" (click)=onComment(p)>Comment</button>
+                    <button *ngIf="!p.reported" class="btn btn-danger btn-cus-link2" (click)=onReport(p)>Report</button>
+                    <button *ngIf="p.reported" class="btn btn-secondary btn-cus-link3">Reported</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No Posts Yet</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<app-footer></app-footer>

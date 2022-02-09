@@ -1,0 +1,68 @@
+<!-- <app-header [navigationitems]="userSideNavigationdata"></app-header> -->
+
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="add">
+    <div>
+      <h1></h1>
+    </div>
+    <div style="width:100%;display: flex;flex-direction: row;">
+      <mat-form-field appearance="outline" style="flex:1;">
+        <mat-label>Physician Name</mat-label>
+        <mat-select formControlName="employee" (selectionChange)="showPhysicianId($event.value)">
+          <mat-option
+            *ngFor="let data of listOfPhysician"
+            [value]="data"
+            >{{ data.firstName }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    <!-- </div>
+    <div> -->
+      <mat-form-field appearance="outline" style="flex: 1;">
+        <mat-label>Physician Id</mat-label>
+        <input matInput value={{physicianId}} readonly/>
+      </mat-form-field>
+    </div>
+    <div style="width:100%;display: flex;flex-direction: row;">
+      <mat-form-field appearance="outline" style="flex:1;">
+        <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" [min]="todayDate"
+      placeholder="Choose a date" (dateInput)="appointmentDateSelectEvent($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <!-- </div>
+    <div> -->
+      <mat-form-field appearance="outline" style="flex: 1;">
+        <mat-label>Appointment Time Slot</mat-label>
+        <mat-select formControlName="time"
+        ><mat-option *ngFor="let data of listOfTimeSlot" [value]="data">{{
+            data
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form" style="width: 100%;">
+      <div>
+        <div class="discription" style="width:100%;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Descriptive Info</mat-label>
+              <textarea matInput formControlName="description"></textarea>
+            
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div>
+        <mat-dialog-actions align="end">
+          <button mat-button matDialogClose="no" style="margin-bottom: 5%; background-color: crimson; color: white;">Cancel</button>
+          <button mat-raised-button color="primary" [disabled]="form.invalid" style="margin-bottom: 5%;" cdkFocusInitial>Save</button>
+      </mat-dialog-actions>
+        
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <app-footer></app-footer> -->

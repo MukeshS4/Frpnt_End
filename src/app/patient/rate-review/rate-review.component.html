@@ -1,0 +1,194 @@
+<app-header [navigationitems]=sideNavigationdata></app-header>
+<div class="RateReview">
+    <p-tabView>
+        <p-tabPanel class="tabview-header" header="To Review" [selected]=true>
+            <p-table #dt [value]="patientAppointmentData" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+                styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['appointmentId','patientId','employeeId','status','action']">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex">
+                        <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                            (click)="clear(dt)"></button>
+                        <span class="p-input-icon-left p-ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text"
+                                (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Patient Name
+                                <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Physician Name
+                                <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Appointment Id
+                                <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Consulted At
+                                <p-columnFilter type="text" field="dateOfRegistration" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Status
+                                <p-columnFilter field="status" matchMode="equals" display="menu">
+                                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                        <p-dropdown [ngModel]="value" [options]="statuses"
+                                            (onChange)="filter($event.value)" placeholder="Any">
+                                            <ng-template let-option pTemplate="item">
+                                                <span
+                                                    [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                            </ng-template>
+                                        </p-dropdown>
+                                    </ng-template>
+                                </p-columnFilter>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Action
+                                <p-columnFilter type="text" field="action" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-p>
+                    <tr>
+                        <td>
+                            {{p.patientData.firstName}} {{p.patientData.lastName}}
+                        </td>
+                        <td>
+                            <span>{{p.employee.firstName}} {{p.employee.lastName}}</span>
+                        </td>
+                        <td>
+                            <span>{{p.appointmentId}}</span>
+                        </td>
+                        <td>
+                            <span>{{p.createdTs}}</span>
+                        </td>
+                        <td>
+                            <div *ngIf="p.status === 4">Completed</div>
+                        </td>
+                        <td>
+                            <button class="btn btn-warning btn-cus-link1" (click)=onSubmitRateReview(p)>Rate &
+                                Review</button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="7">No Appointments completed,yet to Review.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+            <p-dialog header="Rate & Review" [(visible)]="displayReviewModal" [modal]="true" [style]="{width: '40vw'}"
+                [draggable]="false" [resizable]="false">
+                <form [formGroup]="newReviewForm" (ngSubmit)="onReviewSubmit()">
+                    <h4 class="rateTit">Rate</h4>
+                    <p-rating (onRate)="getRating($event.value)" [(ngModel)]="rating" [cancel]="false"></p-rating>
+                    <h4 class="reviewTit">Review:</h4>
+                    <textarea class="txt md-textarea form-control" rows="4" formControlName="reviewTextArea"></textarea>
+                    <div class="btn-wd">
+                        <button type="reset" class="cusbtn btn btn-primary">Reset</button>
+                        <button type="submit" class="cusbtn btn btn-success">Submit</button>
+                    </div>
+                </form>
+                <!-- <ng-template pTemplate="footer">
+                        <p-button icon="pi pi-check" (click)="displayModal=false" label="submit" styleClass="p-button-text">
+                        </p-button>
+                    </ng-template> -->
+            </p-dialog>
+        </p-tabPanel>
+        <p-tabPanel class="tabview-header" header="Reviewed" [selected]=false>
+            <p-table #dt [value]="reviewData" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+                styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['ratedBy','ratedOn','status','rate','review']">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex">
+                        <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash"
+                            (click)="clear(dt)"></button>
+                        <span class="p-input-icon-left p-ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text"
+                                (input)="dt.filterGlobal($any($event.target).value, 'contains')"
+                                placeholder="Search keyword" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Rated By
+                                <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Rated On
+                                <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Rating
+                                <p-columnFilter type="text" field="email" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="p-d-flex p-jc-between p-ai-center">
+                                Review
+                                <p-columnFilter type="text" field="dateOfRegistration" display="menu"></p-columnFilter>
+                            </div>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-p>
+                    <tr>
+                        <td>
+                            {{p.ratedBy}}
+                        </td>
+                        <td>
+                            <span>{{p.ratedOn}} </span>
+                        </td>
+                        <td>
+                            <span>{{p.rating}}</span>
+                        </td>
+                        <td>
+                            <span>{{p.review}}</span>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="7">No Reviews Done Yet.</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-tabPanel>
+    </p-tabView>
+
+
+</div>
+<app-footer></app-footer>

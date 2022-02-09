@@ -1,0 +1,22 @@
+/* table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  } */
+
+  .signs {
+    font-weight: bolder;
+    font-size: large;
+  }
+  
+  .innerTable {
+    width: 100% !important;
+    padding: 2px;
+  }
+  
+  .cellColor {
+    background: lightgrey;
+  }

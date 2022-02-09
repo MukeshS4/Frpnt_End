@@ -1,0 +1,46 @@
+:host ::ng-deep .p-dialog .p-dialog-header .p-dialog-title{
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.50rem;
+  color: blue;
+  width: 100%;
+}
+:host ::ng-deep .pi-star-o:before{
+    color: red;
+
+}
+
+:host ::ng-deep .pi-star:before{
+    color: rgb(245, 245, 35);
+}
+
+:host ::ng-deep .p-rating-star{
+    color: rgb(245, 245, 35);;
+}
+
+.cusbtn {
+  border-radius: 12px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.pst {
+  margin-left: 11px;
+}
+
+.rateTit{
+    font-weight: 700;
+    color: red;
+}
+
+.reviewTit{
+    font-weight: 700;
+    color: red;
+    margin-top:6px;
+}
+
+.btn-wd {
+    width: 100%;
+    text-align: center;
+    margin-top: 7px;
+  }

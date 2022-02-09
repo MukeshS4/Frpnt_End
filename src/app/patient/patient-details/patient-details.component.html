@@ -1,0 +1,113 @@
+<!-- <app-header></app-header> -->
+<div class="container">
+    <div *ngFor="let post of posts">
+      <div class="patient-details-info">
+        <div class="section-body">
+          <div class="section-header">PATIENT DETAILS:</div>
+          <div class="field">
+            <div>Name:</div>
+            <div>
+              {{ post.demographies.title }} {{ post.demographies.first_name }}
+              {{ post.demographies.last_name }}
+            </div>
+          </div>
+  
+          <div class="field">
+            <div>Date of Birth:</div>
+            <div>{{ post.demographies.date_of_birth }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Age:</div>
+            <div>{{ post.demographies.age }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Gender:</div>
+            <div>{{ post.demographies.gender }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Race:</div>
+            <div>{{ post.demographies.race }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Ethinicity:</div>
+            <div>{{ post.demographies.ethinicity }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Languages Known:</div>
+            <div>{{ post.demographies.language }}</div>
+          </div>
+  
+          <div class="field">
+            <div>Email Id:</div>
+            <div>{{ post.demographies.email }}</div>
+          </div>
+          <div class="field">
+            <div>Home Address:</div>
+            <div>{{ post.demographies.home_address }}</div>
+          </div>
+          <div class="field">
+            <div>Phone Number:</div>
+            <div>{{ post.demographies.contact_number }}</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="section-header">EMERGENCY CONTACT DETAILS:</div>
+          <div class="field">
+            <div>First Name:</div>
+            <div>
+              {{ post.demographies.emergency_contact_details.e_first_name }}
+            </div>
+          </div>
+          <div class="field">
+            <div>Last Name:</div>
+            <div>{{
+              post.demographies.emergency_contact_details.e_last_name
+            }}</div>
+          </div>
+          <div class="field">
+            <div>Relationship:</div>
+            <div>{{
+              post.demographies.emergency_contact_details.relationship
+            }}</div>
+          </div>
+          <div class="field">
+            <div>Email:</div>
+            <div>{{
+              post.demographies.emergency_contact_details.email_address
+            }}</div>
+          </div>
+          <div class="field">
+            <div>Phone No.:</div>
+            <div>{{ post.demographies.emergency_contact_details.contact }}</div>
+          </div>
+          <div class="field">
+            <div>Address:</div>
+            <div>{{ post.demographies.emergency_contact_details.address }}</div>
+          </div>
+        </div>
+        <!-- <div class="section-body" *ngIf="post.allergies.allergyid != null">
+          <div class="section-header">ALLERGY DETAILS:</div>
+          <div class="field">
+            <div>Id:</div> <div>{{ post.allergies.allergyid }}</div>
+          </div>
+          <div class="field">
+            <div>Name:</div> <div>{{ post.allergies.allergyname }}</div>
+          </div>
+          <div class="field">
+            <div>Type:</div> <div>{{ post.allergies.type }}</div>
+          </div>
+          <div class="field">
+            <div>Description:</div>
+            <div>{{ post.allergies.allergydescription }}</div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  

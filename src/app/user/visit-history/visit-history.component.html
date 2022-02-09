@@ -1,0 +1,139 @@
+ <!-- <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+  </mat-form-field>
+  
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+  
+      <ng-container matColumnDef="appointmentId" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;">Appointment Id </th>
+        <td mat-cell *matCellDef="let row">{{row.appointment.appointmentId}}  </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="physicianName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Physician Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.appointment.employee.firstName}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Date&Time</th>
+        <td mat-cell *matCellDef="let row">{{row.appointment.date}} {{row.time}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appointmentDescription">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;">Description </th>
+        <td mat-cell *matCellDef="let row"> {{row.appointment.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 10%;">Visit Details </th>
+        <td mat-cell *matCellDef="let row"> <button
+          mat-raised-button
+          color="primary"
+          (click)="viewMore()"
+        >
+          Consult
+        </button> </td>
+      </ng-container>
+      
+      <tr>
+        <div *ngIf="moreDetail">
+          <td mat-cell *matCellDef="let row">{{row.diagnosis.diagnosis.dCode}}</td>
+          
+        </div>
+      </tr>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div> -->
+
+  <!-- <div class="row">
+    <div class="col-12 text-center">
+        <label for="Heading" class="form-control">
+            material table inside row , multiple paginators - angular Material Table
+        </label>
+    </div>
+</div> -->
+<div>
+<div class="row justify-content-center">
+    <div class="col-15">
+        <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="dataSource"  multiTemplateDataRows>
+
+              <ng-container matColumnDef="appointmentId" >
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;">Appointment Id </th>
+                <td mat-cell *matCellDef="let row" style="width: 20%;">{{row.appointment.appointmentId}}  </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="physicianName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Physician Name </th>
+                <td mat-cell *matCellDef="let row" style="width: 20%;"> {{row.appointment.employee.firstName}} 
+               | {{row.appointment.employee.lastName}}</td>
+              </ng-container>
+          
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20%;"> Date&Time</th>
+                <td mat-cell *matCellDef="let row" style="width: 20%;">{{row.appointment.date}}T{{row.appointment.time}} </td>
+              </ng-container>
+        
+              <ng-container matColumnDef="appointmentDescription">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 40%;">Description </th>
+                <td mat-cell *matCellDef="let row" style="width: 40%;"> {{row.appointment.description}} </td>
+              </ng-container>
+
+                <ng-container matColumnDef="expandedDetail">
+                    <mat-cell class="cellColor" [attr.colspan]="displayedColumns.length"
+                        *matCellDef="let detail; let i = dataIndex">
+                        <div class="innerTable">
+                            <mat-table class="table-striped" #table [dataSource]="dataSourceSecondTable"
+                                multiTemplateDataRows>
+
+                                <ng-container matColumnDef="test">
+                                    <mat-header-cell *matHeaderCellDef> Diagnosis </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.diagnosis[0].diagnosis.dCode}} | {{element.diagnosis[0].diagnosis.dDescription}} | {{element.diagnosis[0].isDepricated}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="marathi">
+                                    <mat-header-cell *matHeaderCellDef> Procedure </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.procedure[0].procedure.pCode}} | {{element.procedure[0].procedure.pDescription}} | {{element.procedure[0].isDepricated}} </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="english">
+                                    <mat-header-cell *matHeaderCellDef> Medication </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.medication[0].mId}} | {{element.medication[0].name}} |
+                                      {{element.medication[0].genericName}} | {{element.medication[0].brandName}} | {{element.medication[0].form}}</mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumnsSecondTable"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumnsSecondTable;" matRipple
+                                    class="element-row"></mat-row>
+                            </mat-table>
+                            <!-- <mat-paginator #subTablePaginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons>
+                            </mat-paginator> -->
+                        </div>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns; let rInd = dataIndex" matRipple
+                    class="element-row" [class.expanded]="row.isExpanded" (click)="expandCollapse(row, rInd)"></mat-row>
+                <mat-row *matRowDef="let row; columns: ['expandedDetail'];"
+                    [@detailExpand]="row.isExpanded == true ? 'expanded' : 'collapsed'" style="overflow: hidden">
+                </mat-row>
+            </mat-table>
+            <mat-paginator #mainTablePaginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>
+<button mat-button matDialogClose="no" style="margin-top: 1%; 
+  align-content: flex-end; background-color: crimson; color: white;">Cancel</button>
+  </div>

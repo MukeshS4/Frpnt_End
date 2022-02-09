@@ -1,0 +1,90 @@
+.login-box h2 {
+  color: rgb(96, 61, 61);
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+}
+.login-box h3 {
+  color: rgb(96, 61, 61);
+  text-align: center;
+  font-size: 32px;
+  font-weight: bolder;
+}
+.login-box .input {
+  position: relative;
+  
+}
+
+.login-box .input .input-field {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(96, 61, 61);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(96, 61, 61);
+  outline: none;
+  background: transparent;
+}
+.login-box .input .input-label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(96, 61, 61);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .input .input-field:focus ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+  
+}
+.login-box .input .input-field:focus {
+border-bottom: 1px solid #03e9f4;
+}
+.login-box .input .input-field:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #020d0e;
+  font-size: 12px;
+  
+}
+
+.coll {
+  color: rgb(96, 61, 61);
+}
+.login-box {
+  width: 35vw;
+  min-width: 400px;
+background-color: #ececec;
+border-radius: 25px;
+  margin-bottom: 30px;
+  
+box-shadow: rgb(0 0 0 / 30%) 0px 1px 2px 0px, rgb(0 0 0 / 15%) 0px 2px 6px 2px;
+
+}
+.frm{
+  padding: 25px;
+}
+.text-center.heading {
+  background-color: #8dbdc8;
+  padding: 1px -1px;
+  padding-top: 14px;
+  padding-bottom: 1px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  /* font-size: 54px; */
+}
+
+
+.bgimage {
+  width: 100%;
+  background-image: url(https://www.alma-valves.ie/wp-content/themes/alma/images/2c.jpg); 
+  max-width: unset !important;
+  background-repeat: repeat;
+}

@@ -1,0 +1,111 @@
+.user {
+  border-radius: 50px;
+  background-color: lightgray;
+  color: black;
+  height: 30px;
+  width: 30px;
+  /* margin-: 0px;     */
+}
+.pi-bell {
+  font-size: 1rem;
+  padding: 10px;
+  margin: 2px;
+  color: black;
+  background-color: lightgray;
+  border-radius: 20px;
+}
+.pi-bell:hover {
+  background-color: blue;
+  color: white;
+}
+.btn-notification {
+  border: none;
+  background-color: none;
+}
+::ng-deep .p-panelmenu-header-link{
+  padding: 1rem 1.25rem;
+  font-weight: 650;
+  border-radius: 4px;
+  border: none;
+  background-color: transparent;
+  transition: box-shadow 0.15s;
+}
+::ng-deep .p-panelmenu-header-link:hover {
+  background-color: white;
+  color: darkblue;
+  transition: box-shadow 0.15s;
+}
+::ng-deep .p-panelmenu-header-link .p-panelmenu .p-panelmenu-header > a {
+  padding: 1rem 1.25rem;
+  border: none;
+  background-color: transparent;
+  color: #212529;
+  background:transparent;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: box-shadow 0.15s;
+}
+.loggedIn{
+  position: absolute;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: cursive;
+    color: darkslateblue;
+    background-color: white;
+}
+::ng-deep .p-sidebar-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: #efefef;
+}
+::ng-deep .p-sidebar-content .p {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-color: whitesmoke;
+}
+::ng-deep .p-sidebar .p-sidebar-content {
+  padding:0;
+}
+::ng-deep .p-sidebar-header::before {
+  color: darkblue;
+  content: "CitiusTech";
+  font-size: 30px;
+  font-weight: 900;
+  position: absolute;
+  left: 79px;
+}
+::ng-deep .menucustom {
+  width: 150px;
+  text-align: center;
+}
+
+.custom-p .ui-menu {
+  width: fit-content;
+  justify-content: center;
+}
+.user-button {
+  font-size: 1rem;
+  padding: 5px;
+  margin: 3px;
+  color: black;
+  background-color: lightgray;
+  border-radius: 20px;
+  border: none;
+}
+.header-title {
+  font-size: larger;
+  font-weight: 700;
+  color: darkblue;
+}
+.header-button {
+  border: none;
+  background-color: transparent;
+}

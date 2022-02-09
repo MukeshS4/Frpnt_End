@@ -1,0 +1,94 @@
+<app-header [navigationitems]=sideNavigationdata></app-header>
+<div class="container-fluid mr-top">
+    <p-table #dt [value]="userData" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+	[rowsPerPageOptions]="[10,25,50]" [loading]="loading" styleClass="p-datatable-customers p-datatable-gridlines"
+	[paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+	[globalFilterFields]="['employeeId','firstName','lastName','dateofJoining','status']">
+	<ng-template pTemplate="caption">
+		<div class="p-d-flex">
+            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
+			<span class="p-input-icon-left p-ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search keyword" />
+            </span>
+		</div>
+	</ng-template>
+	<ng-template pTemplate="header">
+		<tr>
+			<th scope="col">
+				<div class="p-d-flex p-jc-between p-ai-center">
+					Employee Id
+					<p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+				</div>
+			</th>
+			<th scope="col">
+				<div class="p-d-flex p-jc-between p-ai-center">
+					Employee Name
+					<p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+				</div>
+			</th>
+            <th scope="col">
+				<div class="p-d-flex p-jc-between p-ai-center">
+					Date Of Joining
+					<p-columnFilter type="text" field="dateOfRegistration" display="menu"></p-columnFilter>
+				</div>
+			</th>
+			<th scope="col">
+				<div class="p-d-flex p-jc-between p-ai-center">
+					Status
+					<p-columnFilter field="status" matchMode="equals" display="menu">
+						<ng-template pTemplate="filter" let-value let-filter="filterCallback">
+							<p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+								placeholder="Any">
+								<ng-template let-option pTemplate="item">
+									<span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+								</ng-template>
+							</p-dropdown>
+						</ng-template>
+					</p-columnFilter>
+				</div>
+			</th>
+            <th>
+				<div class="p-d-flex p-jc-between p-ai-center">
+					Action
+					<p-columnFilter type="text" field="action" display="menu"></p-columnFilter>
+				</div>
+			</th>
+            
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="body" let-h>
+		<tr>
+			<td>
+				{{h.employeeId}}
+			</td>
+			<td>
+				<span>{{h.firstName}} {{h.lastName}}</span>
+			</td>
+			<td>
+				<span >{{h.dateofJoining}}</span>
+			</td>
+			<td  >
+				<div *ngIf="h.status">Active</div>
+				<div *ngIf="!h.status">InActive</div>
+			</td>
+            <td>
+                <button class="btn btn-danger btn-cus-link1" (click)=onDelete(h)>Delete</button>
+            </td>
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="emptymessage">
+		<tr>
+			<td colspan="7">No Staff found.</td>
+		</tr>
+	</ng-template>
+</p-table>
+
+</div>
+<p-dialog header="Sucess" [(visible)]="successModal" [style]="{width: '30vw'}" [baseZIndex]="10000">
+    <i class="pi pi-thumbs-up"></i> User Deleted!
+</p-dialog>
+<p-dialog header="Failed" [(visible)]="errorModal"  [style]="{width: '30vw'}" [baseZIndex]="10000">
+    <i class="pi pi-thumbs-down"></i> User Deletion Failed!
+</p-dialog>
+<app-footer></app-footer>

@@ -1,0 +1,86 @@
+<!-- <p>login works!</p> -->
+<!-- <button (click)="onLogin()">Register</button> -->
+<div id="login" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="login-commonText">
+                        <h1>Practice Management System</h1>
+                        <p>A Module that covers required HealthCare Functionality, providing basic features as an
+                            hands-on practice</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="login-form">
+                        <form [formGroup]="loginForm" (ngSubmit)="checklogin()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <span class="form-label">EmailId</span>
+                                        <input class="form-control" type="email" name="emailId" id="emailId"
+                                            formControlName="emailId" [class.is-Valid]="emailControlValid"
+                                            [class.is-Invalid]="emailControlInvalid" placeholder="abc@gmail.com">
+                                    </div>
+                                    <span class="invalid" *ngIf='emailControl.hasError("required")'>*Email is
+                                        required</span>
+                                    <span class="invalid" *ngIf='emailControl.hasError("email")'>*Email Id is not
+                                        valid</span>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <span class="form-label">Password</span>
+                                        <input class="form-control" type="password" name="password" id="password"
+                                            formControlName="password" [class.is-Valid]="passwordControlValid"
+                                            [class.is-Invalid]="passwordControlInvalid">
+                                    </div>
+                                    <span class="invalid" *ngIf='passwordControl.hasError("required")'>
+                                        *Password is required</span>
+                                    <span class="invalid" *ngIf='passwordControl.hasError("pattern")'>
+                                        *Password is not valid</span>
+                                </div>
+                                <div class="invalid" *ngIf="incorrectPassword">
+                                    Incorrect password
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-check"><input class="form-input-check" id="rememberMe"
+                                                type="checkbox" value="" id="rememberMe"
+                                                formControlName="checkbox" /><label class="form-check-label"
+                                                for="flexCheckDefault">
+                                                Remeber Me
+                                            </label></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-link">
+                                    <a [routerLink]="['auth/forgot-password']"
+                                        routerLinkActive="router-link-active">Forgot</a>
+                                    <a [routerLink]="['auth/change-password']" routerLinkActive="router-link-active">/
+                                        Change password</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="submit-button" type="submit" [disabled]="loginForm.invalid">Log
+                                        In</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="submit-button" [routerLink]="['/register']"
+                                        type="button">Register</button>
+                                </div>
+                                <!-- <div class="col-md-6">
+                                    <button class="submit-button" [routerLink]="['admin']"
+                                        type="button">Admin</button>
+                                </div> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-dialog header="Already in Lock" [(visible)]="accountLocked">
+    <i class="pi pi-exclamation-triangle"></i> Your Account is Locked! Contact Admin to Unlock
+</p-dialog>
+<p-dialog header="Locked" [(visible)]="accountLockedNotify">
+    <i class="pi pi-exclamation-triangle"></i> Your Account is Locked due to 3 unseccessful entry! Contact Admin to Unlock
+</p-dialog>

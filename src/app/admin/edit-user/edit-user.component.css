@@ -1,0 +1,51 @@
+
+:host ::ng-deep .p-input-icon-left, .p-input-icon-right {
+    float: right;
+    /* position: relative; */
+    display: inline-block;
+}
+.mr-top{
+    margin-top: 25px;
+}
+:host ::ng-deep .p-tabview-nav{
+    /* text-align: center; */
+    justify-content: center;
+    /* width: 100%; */
+}
+.btn-cus-link1{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+.btn-cus-link2{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.btn-cus-link2:hover{
+    color: white;
+    background-color: red;
+    border-color: white;
+    border:2px solid;
+}
+
+.btn-cus-edit{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.btn-cus-edit:hover{
+    color: white;
+    background-color:lightgreen;
+    border-color: white;
+    border:2px solid;
+}

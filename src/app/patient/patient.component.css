@@ -1,0 +1,152 @@
+button.calendar,
+button.calendar:active {
+  width: 2.75rem;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=") !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+
+.hide {
+  display: none;
+}
+
+.login-box h2 {
+  color: rgb(96, 61, 61);
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+}
+.login-box h3 {
+  color: rgb(96, 61, 61);
+  text-align: center;
+  font-size: 32px;
+  font-weight: bolder;
+}
+.login-box .input {
+  position: relative;
+}
+
+.login-box .input .input-field {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(96, 61, 61);
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid rgb(96, 61, 61);
+  outline: none;
+  background: transparent;
+}
+.login-box .input .input-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: rgb(96, 61, 61);
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.login-box .input .input-field:focus ~ label {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+.login-box .input .input-field:focus {
+  border-bottom: 1px solid #03e9f4;
+}
+.login-box .input .input-field:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #010a0a;
+  font-size: 12px;
+}
+
+.coll {
+  color: rgb(96, 61, 61);
+}
+.login-box {
+  background-color: #ececec;
+  border-radius: 25px;
+  margin-bottom: 30px;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 2px 0px, rgb(0 0 0 / 15%) 0px 2px 6px 2px;
+}
+.frm {
+  padding: 25px;
+}
+.text-center.heading {
+  background-color: #8dbdc8;
+  padding: 1px -1px;
+  padding-top: 14px;
+  padding-bottom: 1px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  /* font-size: 54px; */
+}
+
+.v-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.v-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.v-field {
+  border: none;
+  border-bottom: 1px solid rgb(96, 61, 61);
+  outline: none;
+  background: transparent;
+  margin: 0 10px 0 0;
+}
+
+.v-patient-form {
+  width:70vw;
+}
+
+.form-check-label {
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.form-check-input {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.v-form-row {
+  margin-bottom: 30px;
+}
+
+.v-column .input-label {
+  margin-bottom: 5px;
+}
+
+.bgimage {
+  width: 100%;
+  background-image: url(https://www.alma-valves.ie/wp-content/themes/alma/images/2c.jpg); 
+  max-width: unset !important;
+  background-repeat: repeat;
+}
+
+@media  (max-width: 800px) {
+  .v-form-row {
+    flex-direction: column;
+  }
+
+  .v-column {
+    margin-bottom: 10px;
+  }
+
+  .v-patient-form {
+    min-width: 400px;
+  }
+}

@@ -1,0 +1,68 @@
+
+:host ::ng-deep .p-tabview-nav{
+    /* text-align: center; */
+    justify-content: center;
+    /* width: 100%; */
+}
+.headerTrace{
+    font-weight: 900;
+    color: blue;
+    text-align: center;
+}
+.methodStyle{
+    background-color: yellow;
+    border-radius: 10px;
+    color: black;
+    width: fit-content;
+    font-size: small;
+    padding: 5px;
+    font-weight: 700;
+}
+.status1{
+    background-color:green;
+    border-radius: 10px;
+    color: white;
+    width: fit-content;
+    font-size: small;
+    padding: 5px;
+    font-weight: 700;
+
+}
+
+.status3{
+    background-color:orange;
+    border-radius: 10px;
+    color: white;
+    width: fit-content;
+    font-size: small;
+    padding: 5px;
+    font-weight: 700;
+
+}
+
+.status5{
+    background-color:red;
+    border-radius: 10px;
+    color: white;
+    width: fit-content;
+    font-size: small;
+    padding: 5px;
+    font-weight: 700;
+
+}
+
+.uri{
+    color: blue;
+}
+
+:host ::ng-deep progress::-webkit-progress-value {
+    background: green;
+}
+
+:host ::ng-deep .p-progressbar-value {
+    background-color: #2ac53a;
+}
+
+:host ::ng-deep .down .p-progressbar-value {
+    background-color:red;
+}

@@ -1,0 +1,39 @@
+.grid-col{
+    margin-bottom: 10px;
+    border-color: #0d6efd!important;
+    border: 3px solid;
+    border-radius: 10px;
+}
+.mr-top{
+    margin-top: 25px;
+}
+
+.btn-cus-unlock{
+    width: 100px;
+    padding: 5px;
+    border-radius: 18px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+}
+.btn-cus-unlock:hover{
+    background-color: rgb(87, 248, 114);
+    border-color: greenyellow;
+    color:black;
+    border:2px solid;
+}
+
+
+:host ::ng-deep .p-input-icon-left, .p-input-icon-right {
+    float: right;
+    /* position: relative; */
+    display: inline-block;
+}
+.mr-top{
+    margin-top: 25px;
+}
+:host ::ng-deep .p-tabview-nav{
+    /* text-align: center; */
+    justify-content: center;
+    /* width: 100%; */
+}

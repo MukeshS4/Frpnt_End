@@ -1,0 +1,68 @@
+<mat-card class="add-card">
+  <mat-card-title-group>
+    <form [formGroup]="sendNotes" (ngSubmit)="onSend()">
+      <div class="input">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Reciver Id</mat-label>
+            <mat-select
+              formControlName="receiverId"
+              (selectionChange)="showData($event.value)"
+            >
+              <mat-option *ngFor="let data of listOfReceiver" [value]="data">{{
+                data.employeeId
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Receiver Name</mat-label>
+            <input
+              matInput
+              value="{{ receiverName }}"
+              formControlName="receiverName"
+              readonly
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Receiver Designation</mat-label>
+            <input
+              matInput
+              value="{{ receiverDesignation }}"
+              formControlName="receiverDesignation"
+              readonly
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Message</mat-label>
+            <textarea matInput formControlName="message"></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          {{ todayDate | date: "medium" }}
+        </div>
+        <div>
+          <mat-checkbox class="check" formControlName="priority"
+            >Urgent!</mat-checkbox
+          >
+        </div>
+        <div>
+          <button mat-button matDialogClose="no" 
+          style="margin-bottom: 5%; background-color: crimson; color: white;">Cancel</button> |
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="sendNotes.invalid"
+          >
+            Send
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card-title-group>
+</mat-card>

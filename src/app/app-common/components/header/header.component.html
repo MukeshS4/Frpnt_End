@@ -1,0 +1,52 @@
+<!-- <mat-toolbar> -->
+<!-- <button mat-icon-button class="example-icon" >
+        <mat-icon>menu</mat-icon>
+    </button> -->
+<!-- <span class="header-title">CitiusTech-PMS</span> 
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon" [matMenuTriggerFor]="usernotification">
+        <mat-icon matBadge="5" matBadgeColor="accent" matBadgePosition="above after">
+            notifications
+        </mat-icon> -->
+<!-- work on giving a data here from ts file and use *ngFor -->
+<!-- *ngFor="let usernot of userotification" -->
+<!-- <mat-menu #usernotification="matMenu">
+            <button mat-menu-item>You have a patient visit on 20/09/2021</button>
+            <button mat-menu-item>You have a patient visit on 20/09/2021</button>
+            <button mat-menu-item>You have a patient visit on 20/09/2021</button>
+            <button mat-menu-item>You have a patient visit on 20/09/2021</button>
+        </mat-menu>
+    </button>
+    <button mat-icon-button class="example-icon person-icon" [matMenuTriggerFor]="user">
+        <mat-icon class="user">person</mat-icon>
+        <mat-menu #user="matMenu">
+            <button mat-menu-item>Agastin Raj</button>
+            <button mat-menu-item>Logout</button>
+        </mat-menu>
+    </button>
+</mat-toolbar> -->
+<p-menubar [model]="headerItems">
+    <ng-template pTemplate="start">
+        <button class="header-button" (click)="display = true" type="button">
+            <img src="../../../../assets/img/download.jfif" height="40" class="p-mr-2">
+        </button>
+        <span class="header-title">CitiusTech</span>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <!-- <input type="text" pInputText placeholder="Search"> -->
+
+        <button class="btn-notification"><i class="pi pi-bell" pBadge value="2"></i></button>
+        <p-menu [model]="useritems" #menu [popup]="true" styleClass="menucustom"></p-menu>
+        <button class="user-button" type="button" pButton icon="pi pi-user" (click)="menu.toggle($event)"></button>
+        <!-- <i class="pi pi-user"></i> -->
+
+    </ng-template>
+</p-menubar>
+<p-sidebar [(visible)]="display" [baseZIndex]="10001">
+    <!-- <p-sidebar-header class="header-title">CitiusTech-PMS</p-sidebar-header> -->
+    <!-- <div class="p-sidebar-header">CitiusTech</div> -->
+    <p-panelMenu [model]="navigationitems" styleClass="sidebarcustom"></p-panelMenu>
+    <!-- use string interpolation to populate user's name -->
+    <div class="loggedIn">Logged in as: {{userName}}</div> 
+</p-sidebar>
+<!-- [style]="{'width':'300px'}" -->
